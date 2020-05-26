@@ -1,35 +1,37 @@
-function hello(world) {
-    console.log('Hello ' + world);
-}
-hello('Jon');
-var isWinter = false;
-var number = 5;
-var weird = 'Man';
-var names = ['Jon', 'Cena', 'Wayn'];
-var any = ['Maya', 1, true, null];
-var Starks;
-(function (Starks) {
-    Starks[Starks["Jon"] = 0] = "Jon";
-    Starks[Starks["Brendan"] = 1] = "Brendan";
-    Starks[Starks["Eddard"] = 2] = "Eddard";
-    Starks[Starks["Catlyn"] = 3] = "Catlyn";
-})(Starks || (Starks = {}));
-;
-var cat = Starks.Catlyn;
-function getName() {
-    console.log('winter is coming');
-}
-var Stark = /** @class */ (function () {
-    function Stark() {
-        this.name = 'Brandon';
-        this.saying = Stark.castle;
-    }
-    Stark.prototype.hello = function (person) {
-        console.log('Hello ' + person);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
     };
-    Stark.castle = 'Winterfell';
-    return Stark;
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var Person = /** @class */ (function () {
+    function Person(name) {
+        this.name = name;
+    }
+    Person.prototype.dance = function () {
+        console.log(this.name + " is dancing");
+    };
+    return Person;
 }());
-var ned = new Stark;
-ned.saying = 'Winter is coming';
-ned.hello('Robert');
+var john = new Person('John');
+john.dance();
+var AwesomePerson = /** @class */ (function (_super) {
+    __extends(AwesomePerson, _super);
+    function AwesomePerson() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    AwesomePerson.prototype.dance = function () {
+        _super.prototype.dance.call(this);
+        console.log('So awesome');
+    };
+    return AwesomePerson;
+}(Person));
+var rob = new AwesomePerson('Rob');
+rob.dance();
